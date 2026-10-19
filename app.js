@@ -52,6 +52,7 @@
         const productScope=(c.scope.match(/商品[A-D]/)||c.actual.match(/商品[A-D]/)||[])[0];
         item.name=item.name.replace(/商品[A-D]/g,p.name);
         if(productScope && productScope!==p.name) {item.status='pass';item.actual='满足本次示例条件';item.reason='该商品在此示例中的配置满足要求。';item.suggestion='无需处理。';item.repairable=false;}
+        if(s.id==='directPlain'&&c.id==='dp-main-supplier'&&p.name==='商品A'&&!st.repaired.has(`${s.id}:${st.store}:${st.supplier}:${st.warehouse}:${pid}:dp-supply`)){item.status='na';item.actual='供货关系尚未建立';item.reason='前置供货关系缺失，主供应商检查暂不执行，不计为通过。';item.suggestion='先补齐供货关系，再重新检查主供应商。';item.repairable=false;}
         ['actual','reason','scope'].forEach(field=>{item[field]=String(item[field]).replace(/示例门店A/g,label(D.stores,st.store)).replace(/示例供应商A/g,label(D.suppliers,st.supplier));});
         if(st.role==='limited'&&item.sensitive){item.status='unknown';item.actual='无查看权限';item.expected='受权限限制';item.reason='无法取得授权范围内的判定依据，本项不能视为通过。';item.suggestion='请具备权限的岗位核查。';item.repairable=false;}
         rows.push(item);
