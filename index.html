@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="门店订单配置检查与单据生命周期体检交互原型，全部为虚构示例。">
+  <title>配置检查与单据体检 · 需求原型</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar"><strong class="brand">新零帮</strong><span class="app-name">▦　ERP 连锁管理</span><span class="top-right">示例组织　｜　业务演示账号</span></header>
+  <aside class="sidebar" aria-label="模块导航"><div class="nav-item">▧　看板</div><div class="nav-item">▤　档案</div><div class="nav-item active">▣　配送</div><div class="nav-item">▱　采购</div><div class="nav-item">▥　库存</div><div class="nav-item">▦　数据</div></aside>
+  <main class="workspace">
+    <nav class="workspace-tabs" aria-label="页面导航"><span class="tab">ERP看板</span><button class="tab" data-view="config">配置检查</button><button class="tab" data-view="health">单据体检</button></nav>
+    <section class="paper">
+      <div class="toolbar"><button class="btn primary" id="query">⌕ 开始检查</button><button class="btn" id="reset">重置</button><button class="btn" id="examples">载入示例</button><button class="btn" id="export">导出结果</button><span class="spacer"></span><button class="btn plain" id="annotations">显示标注</button><button class="btn plain" id="demoSettings">演示设置</button></div>
+      <div class="prototype-note">交互原型 · 全部为虚构示例，不查询或修改实际业务数据。</div>
+      <div class="annotation" id="introAnnotation"></div>
+      <div id="form"></div>
+      <div id="results" aria-live="polite"></div>
+    </section>
+  </main>
+  <div id="drawerOverlay" class="overlay hidden"><section class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><div class="drawer-head"><strong id="drawerTitle"></strong><button class="link" id="closeDrawer" aria-label="关闭详情">×</button></div><div class="drawer-body" id="drawerBody"></div><div class="drawer-foot" id="drawerFoot"></div></section></div>
+  <div id="modalOverlay" class="overlay hidden"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><strong id="modalTitle"></strong><button class="link" id="closeModal" aria-label="关闭弹窗">×</button></div><div class="modal-body" id="modalBody"></div><div class="modal-foot" id="modalFoot"></div></section></div>
+  <div class="toast hidden" id="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
